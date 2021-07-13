@@ -1,0 +1,35 @@
+﻿@model Vortex.Models.Invocador;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    if (ViewBag.Invocador == null)
+    {
+        <div class="row justify-content-md-center align-items-center" style="margin-top:30vh">
+            <div class="col-md-auto align-self-center text-center">
+                <form asp-action="Index" asp-controller="Home" method="post">
+
+                    <label asp-for="name" class="form-label">Invocador</label>
+                    <input asp-for="name" class="form-control" required>
+                    <div class="invalid-tooltip">
+                        Por favor digite o nome de um invocador.
+                    </div>
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        Invocador invocador = ViewBag.Invocador;
+        <p>@invocador.summonerLevel</p>
+    }
+
+
+
+
+
+    }
+
+
+

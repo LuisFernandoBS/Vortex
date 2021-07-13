@@ -1,0 +1,29 @@
+﻿@model Vortex.Models.PartidasTotal;
+@{
+    ViewData["Title"] = "Privacy Policy";
+    PartidasTotal statusPartidas = ViewBag.Partidas;
+    List<Partida> partidas = statusPartidas.matches;
+}
+
+@{ 
+    foreach (var partida in partidas)
+    {
+
+        <div>
+            <div>
+                <label>Id da partida: </label>
+                <label>@partida.gameId</label>
+            </div>
+            <div>
+                <label>Campeão: </label>
+                <label>@partida.champion</label>
+            </div>
+    
+        </div>
+        <hr />
+        }
+    }
+<div>
+    <label asp-for="totalGames">Total de Partidas: </label>
+    <label asp-for="totalGames">@statusPartidas.totalGames</label>
+</div>
