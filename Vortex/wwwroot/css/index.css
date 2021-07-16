@@ -1,0 +1,32 @@
+﻿body {
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#lInvocador {
+    font-family: Beaufortforlol;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    font-style: italic;
+    color: rgb(208, 168, 92);
+}
+
+#name:focus {
+    border-color: rgb(208, 168, 92);
+    box-shadow: 0 0 1rem 0.6rem rgb(208 168 92 / 25%);
+}
+
+#Buscar {
+    background-color: rgb(11, 196, 226);
+}
+
+form {
+    text-align:center;
+    text-align: -webkit-center;
+}
+
+.form-control{
+    text-align:center;
+}
