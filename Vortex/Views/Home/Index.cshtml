@@ -1,4 +1,6 @@
 ﻿@model Vortex.Models.Invocador;
+<link rel="stylesheet" href="~/css/index.css" />
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,12 +11,14 @@
             <div class="col-md-auto align-self-center text-center">
                 <form asp-action="Index" asp-controller="Home" method="post">
 
-                    <label asp-for="name" class="form-label">Invocador</label>
-                    <input asp-for="name" class="form-control" required>
+                    <h2 id="lInvocador" asp-for="name" class="form-label">Invocador</h2>
+                    <input asp-for="name" class="form-control form-control-lg" style="width:40vw" required>
                     <div class="invalid-tooltip">
                         Por favor digite o nome de um invocador.
                     </div>
-                    <button class="btn btn-primary" type="submit">Buscar</button>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="Buscar" class="btn-lg btn-blue-lol mt-3 b  tn-lg" type="submit">BUSCAR</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -22,14 +26,19 @@
     else
     {
         Invocador invocador = ViewBag.Invocador;
-        <p>@invocador.summonerLevel</p>
+        var icone = "http://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/"+invocador.profileIconId+".png";
+
+        <div class="row justify-content-md-center align-items-center" style="margin-top:30vh">
+            <div class="col-md-auto align-self-center text-center">
+                <img src="@icone" class="rounded-circle"/>
+                <p class="text-white font-weight-bold">@invocador.summonerLevel</p>
+                <p class="text-white font-weight-bold">@invocador.name</p>
+                <p class="text-white font-weight-bold">@invocador.profileIconId</p>
+            </div>
+        </div>
     }
 
-
-
-
-
-    }
+}
 
 
 
