@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -28,9 +29,22 @@ namespace Vortex.Controllers
         [HttpPost]
         public async Task<IActionResult> IndexAsync(Invocador nome)
         {
-            Busca_Invocador invocador = new Busca_Invocador();
+            Busca_Invocador buscaInvocador = new Busca_Invocador();
 
-            ViewBag.Invocador = await invocador.GetInvocadorAsync(nome.name);
+            var Bordas = new List<int> () { 30, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500 };
+
+            Invocador invocador = await buscaInvocador.GetInvocadorAsync(nome.name);
+
+            ViewBag.Invocador = invocador;
+
+            int Borda = 0;
+            foreach (int borda in Bordas) {
+                if ( invocador.summonerLevel >= borda)
+                {
+                    Borda = borda;
+                }
+            }
+            ViewBag.Borda = Borda;
 
             return View();
         }

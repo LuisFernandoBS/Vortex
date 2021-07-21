@@ -30,3 +30,65 @@ form {
 .form-control{
     text-align:center;
 }
+
+#borda {
+    position: relative;
+    width: 450px;
+    height: 450px;
+}
+
+#icone {
+    z-index: -1;
+    position: absolute;
+    padding: 70px;
+}
+#level {
+    z-index: 1;
+    position: absolute;
+    top: 345px;
+    left: 210px;
+    width: 62px;
+    text-align: center;
+    font-style: italic;
+    font-size: 21px;
+    background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+    #level:after {
+        background: none;
+        content: attr(data-heading);
+        left: 0;
+        top: 0;
+        z-index: -1;
+        position: absolute;
+        text-shadow: -1px 0 1px #c6bb9f, 0 1px 1px #c6bb9f, 5px 5px 10px rgba(0, 0, 0, 0.4), -5px -5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+#trapezoid {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+    border: 80px solid rgba(0,0,0,0);
+    border-top: 0 solid;
+    border-bottom: 100px solid black;
+    -webkit-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    font: normal 100%/normal Arial, Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    margin-top: -53px;
+    width: 700px;
+    position: relative;
+    transition: all 0.7s ease;
+    padding-left: 7%;
+}
+
+    #trapezoid a, .subnavbtn {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }

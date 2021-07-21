@@ -28,13 +28,17 @@
         Invocador invocador = ViewBag.Invocador;
 
         var icone = "http://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/"+invocador.profileIconId+".png";
-
-        <div class="row justify-content-md-center align-items-center" style="margin-top:30vh">
+        var borda = "../img/Bordas/" + @ViewBag.Borda + ".png";
+        <div class="row justify-content-md-center align-items-center">
             <div class="col-md-auto align-self-center text-center">
-                <img src="@icone" class="rounded-circle"/>
-                <p class="text-white font-weight-bold">@invocador.summonerLevel</p>
+                <div id="poster">
+                    <img id="icone" src="@icone" class="rounded-circle" />
+                    <img id="borda" src="@borda" />
+                    <p id="level" class="text-white font-weight-bold">@invocador.summonerLevel</p>
+                </div>
+                
                 <p class="text-white font-weight-bold">@invocador.name</p>
-                <p class="text-white font-weight-bold">@invocador.profileIconId</p>
+
             </div>
         </div>
     }
