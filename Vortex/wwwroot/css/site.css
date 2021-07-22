@@ -70,8 +70,37 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.navbar{
+.navbar-lol {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+    border: 80px solid rgba(0,0,0,0);
+    border-top: 0 solid;
+    border-bottom: 100px solid black;
+    -webkit-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    font: normal 100%/normal Arial, Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    margin-top: -53px;
+    width: 700px;
+    position: relative;
+    transition: all 0.7s ease;
+    padding-left: 7%;
+}
 
+.navbar-lol a,.navbar-lol button {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+.navbar-lol>* {
+    position: relative;
+    top: 25px;
 }
 
 /*Personalizações lol*/
