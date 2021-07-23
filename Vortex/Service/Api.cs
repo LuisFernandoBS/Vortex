@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -31,6 +33,18 @@ namespace Vortex.Service
                 var result = await client.GetAsync(URL);
 
                 return  result;
+            }
+        }
+        protected async Task<List<string>> DdragonVersion()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var resposta = await client.GetAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+
+                string conteudo = resposta.Content.ReadAsStringAsync().Result;
+
+
+                return resposta.IsSuccessStatusCode ? JsonConvert.DeserializeObject<List<string>>(conteudo) : null;
             }
         }
     }

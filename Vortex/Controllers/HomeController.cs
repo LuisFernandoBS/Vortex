@@ -70,6 +70,17 @@ namespace Vortex.Controllers
             return View();
         }
 
+        public async Task<IActionResult> DetalhadaAsync()
+        {
+            Busca_Champions buscaChampions = new Busca_Champions();
+
+            ListaChampion listachamp = await buscaChampions.GetChampionsrAsync();
+
+            ViewBag.Champions = listachamp;
+
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

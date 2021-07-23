@@ -1,0 +1,30 @@
+﻿@model Vortex.Models.ListaChampion;
+@{
+    ViewData["Title"] = "Partida Detalhada";
+    ListaChampion listaChampion = ViewBag.Champions;
+    Datum champions = listaChampion.Data;
+}
+
+@{ 
+    foreach (var champion in champions)
+    {
+
+        <div>
+            <div>
+                <label>Id da partida: </label>
+                <label>@champion.key</label>
+            </div>
+            <div>
+                <label>Campeão: </label>
+                <label>@champion.name</label>
+            </div>
+    
+        </div>
+        <hr />
+        }
+    }
+<div>
+    <label >Total de Partidas: </label>
+    <label >@listaChampion.format</label>
+</div>
+
