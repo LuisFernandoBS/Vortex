@@ -2,21 +2,22 @@
 @{
     ViewData["Title"] = "Partida Detalhada";
     ListaChampion listaChampion = ViewBag.Champions;
-    Datum champions = listaChampion.Data;
+    Dictionary<string,Datum> champions = listaChampion.Data;
 }
 
 @{ 
-    foreach (var champion in champions)
+    foreach (KeyValuePair<string, Datum> item in champions)
     {
+        Datum champion = item.Value;
 
         <div>
-            <div>
+            @*<div>
                 <label>Id da partida: </label>
-                <label>@champion.key</label>
-            </div>
+                <label>@champion</label>
+            </div>*@
             <div>
                 <label>Campeão: </label>
-                <label>@champion.name</label>
+                <label>@champion.Title</label>
             </div>
     
         </div>
@@ -25,6 +26,6 @@
     }
 <div>
     <label >Total de Partidas: </label>
-    <label >@listaChampion.format</label>
+    <label >@listaChampion.Type</label>
 </div>
 

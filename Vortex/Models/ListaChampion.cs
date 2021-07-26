@@ -16,7 +16,7 @@
         public string Format { get; set; }
 
         [JsonProperty("version")]
-        public Version Version { get; set; }
+        public string Version { get; set; }
 
         [JsonProperty("data")]
         public Dictionary<string, Datum> Data { get; set; }
@@ -25,7 +25,7 @@
     public partial class Datum
     {
         [JsonProperty("version")]
-        public Version Version { get; set; }
+        public string Version { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -53,7 +53,7 @@
         public List<Tag> Tags { get; set; }
 
         [JsonProperty("partype")]
-        public Partype Partype { get; set; }
+        public string Partype { get; set; }
 
         [JsonProperty("stats")]
         public Dictionary<string, double> Stats { get; set; }
@@ -65,10 +65,10 @@
         public string Full { get; set; }
 
         [JsonProperty("sprite")]
-        public Sprite Sprite { get; set; }
+        public string Sprite { get; set; }
 
         [JsonProperty("group")]
-        public TypeEnum Group { get; set; }
+        public string Group { get; set; }
 
         [JsonProperty("x")]
         public long X { get; set; }
