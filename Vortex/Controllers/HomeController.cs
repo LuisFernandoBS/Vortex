@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Vortex.Models;
@@ -34,7 +35,6 @@ namespace Vortex.Controllers
             var Bordas = new List<int> () { 30, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500 };
 
             Invocador invocador = await buscaInvocador.GetInvocadorAsync(nome.name);
-
             ViewBag.Invocador = invocador;
 
             int Borda = 0;
@@ -78,6 +78,7 @@ namespace Vortex.Controllers
 
             ViewBag.Champions = listachamp;
 
+            ViewBag.Teste = buscaChampions.ChampionJson();
             return View();
         }
 

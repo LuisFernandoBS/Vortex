@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -35,7 +36,7 @@ namespace Vortex.Service
                 return  result;
             }
         }
-        protected async Task<List<string>> DdragonVersion()
+        public async Task<string> DdragonVersion()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -43,9 +44,16 @@ namespace Vortex.Service
 
                 string conteudo = resposta.Content.ReadAsStringAsync().Result;
 
+                var listaVersoes = resposta.IsSuccessStatusCode? JsonConvert.DeserializeObject<List<string>>(conteudo) : null;
 
-                return resposta.IsSuccessStatusCode ? JsonConvert.DeserializeObject<List<string>>(conteudo) : null;
+                return listaVersoes != null ? listaVersoes.FirstOrDefault() : null;
             }
+        }
+
+        public string ChampionJson()
+        {
+            StreamReader dados = new StreamReader("wwwroot/source/Champions.txt");
+            return dados.ReadToEnd();
         }
     }
 }

@@ -19,10 +19,10 @@
         public string Version { get; set; }
 
         [JsonProperty("data")]
-        public Dictionary<string, Datum> Data { get; set; }
+        public Dictionary<string, Champion> Data { get; set; }
     }
 
-    public partial class Datum
+    public partial class Champion
     {
         [JsonProperty("version")]
         public string Version { get; set; }
