@@ -64,6 +64,17 @@ namespace Vortex.Controllers
                     var result = resposta.Content.ReadAsStringAsync().Result;
                     var dados = JsonConvert.DeserializeObject<PartidasTotal>(result);
                     ViewBag.Partidas = dados;
+                    List<PartidaCompleta> partidasCompleta = new List<PartidaCompleta>();
+                    List<Partida> partidas = dados.matches;
+                    Busca_Champions buscaChampions = new Busca_Champions();
+                    foreach (Partida partida in partidas)
+                    {
+                        PartidaCompleta partidaComp = new PartidaCompleta
+                        {
+                            champion = await buscaChampions.GetImgChampionAsync(partida.champion),
+                        };
+                        partidasCompleta.Add(partidaComp);
+                    }
                 }
 
             }
@@ -78,7 +89,6 @@ namespace Vortex.Controllers
 
             ViewBag.Champions = listachamp;
 
-            ViewBag.Teste = buscaChampions.ChampionJson();
             return View();
         }
 

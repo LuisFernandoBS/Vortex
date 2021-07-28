@@ -1,0 +1,10 @@
+﻿.success-lol {
+    border-left: solid .25rem #198754;
+}
+.lose-lol {
+    border-left: solid .25rem #dc3545;
+}
+.partida-lol {
+    border-radius: .25rem;
+    padding-left: 7px;
+}

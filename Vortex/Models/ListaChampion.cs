@@ -98,6 +98,12 @@
         public long Difficulty { get; set; }
     }
 
+    public class ChampionJson
+    {
+        public string Name { set; get; }
+        public long Key { set; get; }
+        public string Versao { set; get; }
+    }
     public enum TypeEnum { Champion };
 
     public enum Sprite { Champion0Png, Champion1Png, Champion2Png, Champion3Png, Champion4Png, Champion5Png };

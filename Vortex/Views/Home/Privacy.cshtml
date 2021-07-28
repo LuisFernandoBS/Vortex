@@ -1,4 +1,5 @@
 ﻿@model Vortex.Models.PartidasTotal;
+    <link rel="stylesheet" href="~/css/partidas.css" />
 @{
     ViewData["Title"] = "Privacy Policy";
     PartidasTotal statusPartidas = ViewBag.Partidas;
@@ -8,8 +9,11 @@
 @{ 
     foreach (var partida in partidas)
     {
-
-        <div>
+        var result = "success-lol";
+        <div class="partida-lol @result">
+            <div>
+                <img class="rounded-circle" src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/Aatrox.png" />
+            </div>
             <div>
                 <label>Id da partida: </label>
                 <label>@partida.gameId</label>

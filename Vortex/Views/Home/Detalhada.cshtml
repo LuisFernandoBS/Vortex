@@ -6,18 +6,13 @@
 }
 
 @{ 
-    <div>
-    <label>Total de Partidas: </label>
-    <label>@ViewBag.Teste</label>
-    </div>
 
-    var json = "{";
     foreach (KeyValuePair<string, Champion> item in champions)
     {
         Champion champion = item.Value;
 
 
-        <div>
+        <div class="">
             <div>
                 <label>Id da Champion: </label>
                 <label>@champion.Key</label>
