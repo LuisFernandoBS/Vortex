@@ -1,9 +1,8 @@
-﻿@model Vortex.Models.PartidasTotal;
+﻿@model Vortex.Models.PartidaCompleta;
     <link rel="stylesheet" href="~/css/partidas.css" />
 @{
     ViewData["Title"] = "Privacy Policy";
-    PartidasTotal statusPartidas = ViewBag.Partidas;
-    List<Partida> partidas = statusPartidas.matches;
+    List<PartidaCompleta> partidas = ViewBag.Partidas;
 }
 
 @{ 
@@ -16,7 +15,7 @@
             </div>
             <div>
                 <label>Id da partida: </label>
-                <label>@partida.gameId</label>
+                <label>@partida.partida</label>
             </div>
             <div>
                 <label>Campeão: </label>
@@ -27,7 +26,3 @@
         <hr />
         }
     }
-<div>
-    <label asp-for="totalGames">Total de Partidas: </label>
-    <label asp-for="totalGames">@statusPartidas.totalGames</label>
-</div>

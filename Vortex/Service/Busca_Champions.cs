@@ -9,11 +9,10 @@ namespace Vortex.Service
 {
     public class Busca_Champions : Api
     {
-        public async Task<ListaChampion> GetChampionsrAsync()
+        public async Task<ListaChampion> GetChampionsrAsync(string versao)
         {
             using (var client = new HttpClient())
             {
-                string versao = await DdragonVersion();
                 HttpResponseMessage resposta = await client.GetAsync("https://ddragon.leagueoflegends.com/cdn/"+ versao + "/data/pt_BR/champion.json");
                 string conteudo = resposta.Content.ReadAsStringAsync().Result;
 
@@ -21,16 +20,16 @@ namespace Vortex.Service
             }
         }
 
-        public async Task GetVerificaDadosAsync()
+        public async Task GetSicronizaDadosAsync()
         {
             string caminho = "wwwroot/source/Champions.json";
             string versao = await DdragonVersion();
-            StreamReader dados = new StreamReader("wwwroot/source/Champions.json");
+            StreamReader dados = new StreamReader(caminho);
             List<ChampionJson> listajson = JsonConvert.DeserializeObject<List<ChampionJson>>(dados.ReadToEnd());
             dados.Close();
             if (!(listajson[0].Versao).Equals(versao))
             {
-                ListaChampion listaChampion = await GetChampionsrAsync();
+                ListaChampion listaChampion = await GetChampionsrAsync(versao);
                 await SetJsonChampionAsync(caminho, listaChampion);
             }
         }
@@ -57,9 +56,8 @@ namespace Vortex.Service
             dados.Close();
         }
 
-        public async Task<string> GetImgChampionAsync(long key)
+        public string GetImgChampion(long key)
         {
-            await GetChampionsrAsync();
             StreamReader dados = new StreamReader("wwwroot/source/Champions.json");
             List<ChampionJson> listajson = JsonConvert.DeserializeObject<List<ChampionJson>>(dados.ReadToEnd());
             foreach (ChampionJson champion in listajson)

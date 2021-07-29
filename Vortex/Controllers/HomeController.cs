@@ -49,45 +49,27 @@ namespace Vortex.Controllers
             return View();
         }
 
-        public async Task<IActionResult> PrivacyAsync()
+        [HttpPost]
+        public IActionResult Index(Invocador nome, string page)
         {
-            using (var client = new HttpClient())
+            switch (page)
             {
-                client.BaseAddress = new Uri("https://br1.api.riotgames.com/lol/match/v4/matchlists/by-account/hqwUuZ7BjrHmz4AtiPfSA8tWjvdw-XmFJzKZDhzuiU4uhd8");
-
-                //HTTP GET
-                HttpResponseMessage resposta = await client.GetAsync("?api_key=RGAPI-53a9f29d-94f5-4ae9-949b-8f240e3650f1");
-
-                ViewBag.Partidas = "";
-                if (resposta.IsSuccessStatusCode)
-                {
-                    var result = resposta.Content.ReadAsStringAsync().Result;
-                    var dados = JsonConvert.DeserializeObject<PartidasTotal>(result);
-                    ViewBag.Partidas = dados;
-                    List<PartidaCompleta> partidasCompleta = new List<PartidaCompleta>();
-                    List<Partida> partidas = dados.matches;
-                    Busca_Champions buscaChampions = new Busca_Champions();
-                    foreach (Partida partida in partidas)
-                    {
-                        PartidaCompleta partidaComp = new PartidaCompleta
-                        {
-                            champion = await buscaChampions.GetImgChampionAsync(partida.champion),
-                        };
-                        partidasCompleta.Add(partidaComp);
-                    }
-                }
-
+                case "Partidas":
+                    return View(PrivacyAsync(nome.accountId));
+                default:
+                    break;
             }
             return View();
         }
-
-        public async Task<IActionResult> DetalhadaAsync()
+        public async Task<IActionResult> PrivacyAsync(string id_invocador)
         {
-            Busca_Champions buscaChampions = new Busca_Champions();
 
-            ListaChampion listachamp = await buscaChampions.GetChampionsrAsync();
+            return View();
+        }
 
-            ViewBag.Champions = listachamp;
+        public IActionResult Detalhada()
+        {
+                 Busca_Champions buscaChampions = new Busca_Champions();
 
             return View();
         }
