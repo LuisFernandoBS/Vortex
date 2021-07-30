@@ -1,17 +1,18 @@
 ﻿@model Vortex.Models.PartidaCompleta;
-    <link rel="stylesheet" href="~/css/partidas.css" />
+<link rel="stylesheet" href="~/css/partidas.css" />
 @{
     ViewData["Title"] = "Privacy Policy";
     List<PartidaCompleta> partidas = ViewBag.Partidas;
 }
 
-@{ 
+@{
     foreach (var partida in partidas)
     {
         var result = "success-lol";
+        var imagem = "http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/" + partida.champion + ".png";
         <div class="partida-lol @result">
             <div>
-                <img class="rounded-circle" src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/Aatrox.png" />
+                <img class="rounded-circle" src="@imagem" />
             </div>
             <div>
                 <label>Id da partida: </label>
@@ -21,8 +22,8 @@
                 <label>Campeão: </label>
                 <label>@partida.champion</label>
             </div>
-    
+
         </div>
         <hr />
-        }
     }
+}

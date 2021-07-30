@@ -46,10 +46,14 @@
                     <img id="borda" src="@borda" />
                     <p id="level" class="text-white font-weight-bold">@invocador.summonerLevel</p>
                 </div>
-                
+
                 <p class="text-white font-weight-bold">@invocador.name</p>
 
+                <div>
+                    <input class="btn btn-dark btn-lg" type="button" value="Partidas" onclick="location.href='@Url.Action("Partidas", "Home")'" />
+                </div>
             </div>
+           
         </div>
     }
 
