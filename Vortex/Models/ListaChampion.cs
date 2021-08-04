@@ -59,6 +59,11 @@
         public Dictionary<string, double> Stats { get; set; }
     }
 
+    public partial class ChampionBasic
+    {
+        public string Name { get; set; } 
+        public string Img { get; set; }
+    } 
     public partial class Image
     {
         [JsonProperty("full")]
@@ -103,6 +108,7 @@
         public string Name { set; get; }
         public long Key { set; get; }
         public string Versao { set; get; }
+        public string Img { set; get; }
     }
     public enum TypeEnum { Champion };
 

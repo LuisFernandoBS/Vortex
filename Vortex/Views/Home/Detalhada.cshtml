@@ -1,37 +1,11 @@
 ﻿@model Vortex.Models.ListaChampion;
 @{
     ViewData["Title"] = "Partida Detalhada";
-    ListaChampion listaChampion = ViewBag.Champions;
-    Dictionary<string, Champion> champions = listaChampion.Data;
+    PartidaDetalhada teste = ViewBag.Teste;
 }
 
-@{ 
-
-    foreach (KeyValuePair<string, Champion> item in champions)
-    {
-        Champion champion = item.Value;
-
-
-        <div class="">
-            <div>
-                <label>Id da Champion: </label>
-                <label>@champion.Key</label>
-            </div>
-            <div>
-                <label>Campeão: </label>
-                <label>@champion.Name</label>
-            </div>
-            <div>
-                <label>Titulo: </label>
-                <label>@champion.Title</label>
-            </div>
-    
-        </div>
-        <hr />
-        }
-    }
 <div>
     <label >Total de Partidas: </label>
-    <label >@listaChampion.Type</label>
+    <label >@teste.GameMode</label>
 </div>
 

@@ -7,8 +7,8 @@ namespace Vortex.Models
 {
     public class PartidaCompleta
     {
-        public string champion { get; set; }
-        public long partida { get; set; }
-        public string resultado { get; set; }
+        public ChampionBasic Champion { get; set; }
+        public long Partida { get; set; }
+        public PartidaBasic Informacoes { get; set; }
     }
 }

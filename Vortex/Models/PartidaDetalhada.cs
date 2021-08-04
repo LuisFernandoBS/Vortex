@@ -13,7 +13,7 @@
         public long GameId { get; set; }
 
         [JsonProperty("platformId")]
-        public PlatformId PlatformId { get; set; }
+        public string PlatformId { get; set; }
 
         [JsonProperty("gameCreation")]
         public long GameCreation { get; set; }
@@ -49,6 +49,20 @@
         public List<ParticipantIdentity> ParticipantIdentities { get; set; }
     }
 
+    public partial class PartidaBasic
+    {
+        public List<ParticipantIdentity> Jogadores { get; set; }
+        public Participant InvocadorPrincipal { get; set; }
+        public bool Resultado { get; set; }
+        public List<InvocChamp> ChampionsPartida { get; set; }
+    }
+
+    public partial class InvocChamp
+    {
+        public string NomeInvocador { get; set; }
+        public string ChampionIcon { get; set; }
+    }
+
     public partial class ParticipantIdentity
     {
         [JsonProperty("participantId")]
@@ -61,7 +75,7 @@
     public partial class Player
     {
         [JsonProperty("platformId")]
-        public PlatformId PlatformId { get; set; }
+        public string PlatformId { get; set; }
 
         [JsonProperty("accountId")]
         public string AccountId { get; set; }
@@ -73,7 +87,7 @@
         public string SummonerId { get; set; }
 
         [JsonProperty("currentPlatformId")]
-        public PlatformId CurrentPlatformId { get; set; }
+        public string CurrentPlatformId { get; set; }
 
         [JsonProperty("currentAccountId")]
         public string CurrentAccountId { get; set; }
@@ -439,10 +453,10 @@
         public PerMinDeltas DamageTakenDiffPerMinDeltas { get; set; }
 
         [JsonProperty("role")]
-        public Role Role { get; set; }
+        public string Role { get; set; }
 
         [JsonProperty("lane")]
-        public Lane Lane { get; set; }
+        public string Lane { get; set; }
     }
 
     public partial class PerMinDeltas
@@ -502,111 +516,4 @@
         public List<object> Bans { get; set; }
     }
 
-    public enum PlatformId { Br1 };
-
-    public enum Lane { None };
-
-    public enum Role { DuoSupport };
-
-    internal class PlatformIdConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(PlatformId) || t == typeof(PlatformId?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            if (value == "BR1")
-            {
-                return PlatformId.Br1;
-            }
-            throw new Exception("Cannot unmarshal type PlatformId");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (PlatformId)untypedValue;
-            if (value == PlatformId.Br1)
-            {
-                serializer.Serialize(writer, "BR1");
-                return;
-            }
-            throw new Exception("Cannot marshal type PlatformId");
-        }
-
-        public static readonly PlatformIdConverter Singleton = new PlatformIdConverter();
-    }
-
-    internal class LaneConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Lane) || t == typeof(Lane?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            if (value == "NONE")
-            {
-                return Lane.None;
-            }
-            throw new Exception("Cannot unmarshal type Lane");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (Lane)untypedValue;
-            if (value == Lane.None)
-            {
-                serializer.Serialize(writer, "NONE");
-                return;
-            }
-            throw new Exception("Cannot marshal type Lane");
-        }
-
-        public static readonly LaneConverter Singleton = new LaneConverter();
-    }
-
-    internal class RoleConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Role) || t == typeof(Role?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            if (value == "DUO_SUPPORT")
-            {
-                return Role.DuoSupport;
-            }
-            throw new Exception("Cannot unmarshal type Role");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (Role)untypedValue;
-            if (value == Role.DuoSupport)
-            {
-                serializer.Serialize(writer, "DUO_SUPPORT");
-                return;
-            }
-            throw new Exception("Cannot marshal type Role");
-        }
-
-        public static readonly RoleConverter Singleton = new RoleConverter();
-    }
 }

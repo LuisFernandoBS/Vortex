@@ -60,15 +60,16 @@ namespace Vortex.Controllers
             var invocadorKey = "Invocador";
             string invocadorJson = _invocador.Get<string>(invocadorKey);
             Invocador invocador = JsonConvert.DeserializeObject<Invocador>(invocadorJson);
+            _ = new Busca_Champions().GetSicronizaDadosAsync(); 
             Busca_Partidas busca_Partidas = new Busca_Partidas();
             List<PartidaCompleta> partidas = await busca_Partidas.GetPartidasAsync(invocador.accountId);
             ViewBag.Partidas = partidas; 
             return View();
         }
 
-        public IActionResult Detalhada()
+        public async Task<IActionResult> DetalhadaAsync()
         {
-                 Busca_Champions buscaChampions = new Busca_Champions();
+            Busca_Partidas busca_Partidas = new Busca_Partidas();
 
             return View();
         }

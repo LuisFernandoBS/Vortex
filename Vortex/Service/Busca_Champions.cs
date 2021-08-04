@@ -47,6 +47,7 @@ namespace Vortex.Service
                 {
                     Key = champion.Key,
                     Name = champion.Name,
+                    Img = champion.Image.Full,
                     Versao = versao,
                 };
                 listajson.Add(championJson);
@@ -56,7 +57,7 @@ namespace Vortex.Service
             dados.Close();
         }
 
-        public string GetImgChampion(long key)
+        public ChampionBasic GetImgChampion(long key)
         {
             StreamReader dados = new StreamReader("wwwroot/source/Champions.json");
             List<ChampionJson> listajson = JsonConvert.DeserializeObject<List<ChampionJson>>(dados.ReadToEnd());
@@ -64,7 +65,12 @@ namespace Vortex.Service
             {
                 if (key.Equals(champion.Key))
                 {
-                    return champion.Name;
+                    ChampionBasic championBasic = new ChampionBasic()
+                    {
+                        Name = champion.Name,
+                        Img = champion.Img,
+                    };
+                    return championBasic;
                 }
             }
             return null;
