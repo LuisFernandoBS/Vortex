@@ -12,40 +12,52 @@
         string imagem = "http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/" + partida.Champion.Img;
         var InfoJogadorPrinc = partida.Informacoes.InvocadorPrincipal.Stats;
         string kda = InfoJogadorPrinc.Kills + "/" + InfoJogadorPrinc.Deaths + "/" + InfoJogadorPrinc.Assists;
-        List<long> itensJogadorPrinc = new List<long>() { InfoJogadorPrinc.Item0, InfoJogadorPrinc.Item1, InfoJogadorPrinc.Item2, InfoJogadorPrinc.Item3, InfoJogadorPrinc.Item4, InfoJogadorPrinc.Item5, InfoJogadorPrinc.Item6};
-        <div class="partida-lol row @result">
-            <div class="col">
-                <div>
-                    <img class="rounded-circle" src="@imagem" />
-                </div>
-                <div>
-                    <label>Campeão: </label>
-                    <label>@partida.Champion.Name</label>
-                </div>
-                <div>
-                    <label>K/D/A: </label>
-                    <label>@kda</label>
-                </div>
+        List<long> itensJogadorPrinc = new List<long>() { InfoJogadorPrinc.Item0, InfoJogadorPrinc.Item1, InfoJogadorPrinc.Item2, InfoJogadorPrinc.Item3, InfoJogadorPrinc.Item4, InfoJogadorPrinc.Item5, InfoJogadorPrinc.Item6 };
+    <div class="partida-lol row @result">
+        <div class="col">
+            <div>
+                <img class="rounded-circle" src="@imagem" />
             </div>
-            <div class="col">
-                <div class="row row-cols-2 row-cols-6">
-                    @{foreach (long item in itensJogadorPrinc)
-                        {
-                            var imgItem = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/" + item.ToString() + ".png";
-                            <div class="col group-img-item"><img src="@imgItem" width="30" height="30" /></div>
-                        }
-                    }
-                </div>
-                <div class="row row-cols-3">
-                        <div class="col"><h5>Kills</h5></div>
-                        <div class="col"><h5>Deaths</h5></div>
-                        <div class="col"><h5>Assits</h5></div>
-                        <div class="col"><h2>@InfoJogadorPrinc.Kills</h2></div>
-                        <div class="col"><h2>@InfoJogadorPrinc.Deaths</h2></div>
-                        <div class="col"><h2>@InfoJogadorPrinc.Assists</h2></div>
-                </div>
+            <div>
+                <label>Campeão: </label>
+                <label>@partida.Champion.Name</label>
+            </div>
+            <div>
+                <label>K/D/A: </label>
+                <label>@kda</label>
             </div>
         </div>
-        <hr />
-                        }
+        <div class="col">
+            <div class="row row-cols-7">
+                @{foreach (long item in itensJogadorPrinc)
+                    {
+                        var imgItem = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/" + item.ToString() + ".png";
+                        <div class="col group-img-item"><img src="@imgItem" width="30" height="30" /></div>
+                    }
+                }
+            </div>
+            <div class="row row-cols-3">
+                <div class="col"><h5 class="text-center">Kills</h5></div>
+                <div class="col"><h5 class="text-center">Deaths</h5></div>
+                <div class="col"><h5 class="text-center">Assits</h5></div>
+                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Kills</h2></div>
+                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Deaths</h2></div>
+                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Assists</h2></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row row-cols-5">
+                @{ 
+                    List<InvocChamp> Champs = partida.Informacoes.ChampionsPartida;
+                    foreach (InvocChamp Champ in Champs)
+                    {
+                        string imgChamp = "http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/" + Champ.ChampionIcon;
+                        <div class="col"><img src="@imgChamp" width="30" height="30" style="margin-bottom:10px"/></div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+                    }
 }
