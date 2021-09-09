@@ -28,13 +28,21 @@
                 </div>
             </div>
             <div class="col">
-                <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+                <div class="row row-cols-2 row-cols-6">
                     @{foreach (long item in itensJogadorPrinc)
                         {
                             var imgItem = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/" + item.ToString() + ".png";
-                            <div class="col"><img src="@imgItem" width="30" height="30" /></div>
+                            <div class="col group-img-item"><img src="@imgItem" width="30" height="30" /></div>
                         }
                     }
+                </div>
+                <div class="row row-cols-3">
+                        <div class="col"><h5>Kills</h5></div>
+                        <div class="col"><h5>Deaths</h5></div>
+                        <div class="col"><h5>Assits</h5></div>
+                        <div class="col"><h2>@InfoJogadorPrinc.Kills</h2></div>
+                        <div class="col"><h2>@InfoJogadorPrinc.Deaths</h2></div>
+                        <div class="col"><h2>@InfoJogadorPrinc.Assists</h2></div>
                 </div>
             </div>
         </div>
