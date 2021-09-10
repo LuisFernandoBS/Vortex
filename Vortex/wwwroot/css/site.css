@@ -104,3 +104,8 @@ body {
 .btn-blue-lol:hover {
     box-shadow: 0 0 1rem 0.2rem rgb(11 196 226 / 25%);
 }
+.title-lol {
+    font-family: Beaufortforlol;
+    font-size: x-large;
+    font-style:italic;
+}

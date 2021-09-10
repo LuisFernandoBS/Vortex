@@ -1,4 +1,7 @@
-﻿.success-lol {
+﻿body {
+    background-color: #091b29;
+}
+.success-lol {
     border-left: solid .25rem #198754;
 }
 .lose-lol {
@@ -7,7 +10,37 @@
 .partida-lol {
     border-radius: .25rem;
     padding-left: 7px;
+    padding-right:7px;
+    padding-top: 6px;
+    background: linear-gradient(to left, #ad9561 22%, #a58f5e 26%, #a58e5f 27%,#d6b269 40%,#9c8558 78%);
 }
 .group-img-item{
     padding:0px !important;
+}
+.chapions-img{
+    margin-block: 10px
+}
+.team-blue{
+    background-color: deepskyblue;
+}
+.team-red{
+    background-color: tomato;
+}
+.placar {
+    margin-top: 15px;
+}
+.ult-item {
+    margin-right:10px;
+}
+
+img {
+    background-color: darkgray;
+}
+
+.col-4 > .text-center {
+    color: #0d263a;
+    font-weight: 700;
+}
+.col-inicial{
+    text-align:center;
 }

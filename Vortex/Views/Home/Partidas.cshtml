@@ -14,45 +14,55 @@
         string kda = InfoJogadorPrinc.Kills + "/" + InfoJogadorPrinc.Deaths + "/" + InfoJogadorPrinc.Assists;
         List<long> itensJogadorPrinc = new List<long>() { InfoJogadorPrinc.Item0, InfoJogadorPrinc.Item1, InfoJogadorPrinc.Item2, InfoJogadorPrinc.Item3, InfoJogadorPrinc.Item4, InfoJogadorPrinc.Item5, InfoJogadorPrinc.Item6 };
     <div class="partida-lol row @result">
-        <div class="col">
+        <div class="col-2 col-inicial">
             <div>
                 <img class="rounded-circle" src="@imagem" />
             </div>
             <div>
-                <label>Campeão: </label>
-                <label>@partida.Champion.Name</label>
-            </div>
-            <div>
-                <label>K/D/A: </label>
-                <label>@kda</label>
+                <label class="title-lol">@partida.Champion.Name</label>
             </div>
         </div>
-        <div class="col">
+        <div class="col" style="margin-left: 15rem">
             <div class="row row-cols-7">
-                @{foreach (long item in itensJogadorPrinc)
+                @{
+                    int con = 1;
+                    foreach (long item in itensJogadorPrinc)
                     {
-                        var imgItem = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/" + item.ToString() + ".png";
-                        <div class="col group-img-item"><img src="@imgItem" width="30" height="30" /></div>
+
+                        string col = con != 7 ? "col" : "col-1 ult-item";
+                        if (item != 0)
+                        {
+                            var imgItem = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/" + item.ToString() + ".png";
+                            <div class="@col group-img-item"><img src="@imgItem" width="30" height="30"/></div>
+                        }
+                        else
+                        {
+                            <div class="@col group-img-item"><img width="30" height="30"/></div>
+                        }
+                        con += 1;
                     }
                 }
             </div>
-            <div class="row row-cols-3">
-                <div class="col"><h5 class="text-center">Kills</h5></div>
-                <div class="col"><h5 class="text-center">Deaths</h5></div>
-                <div class="col"><h5 class="text-center">Assits</h5></div>
-                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Kills</h2></div>
-                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Deaths</h2></div>
-                <div class="col"><h2 class="text-center">@InfoJogadorPrinc.Assists</h2></div>
+            <div class="row row-cols-3 placar">
+                <div class="col-4"><h5 class="text-center">Kills</h5></div>
+                <div class="col-4"><h5 class="text-center">Deaths</h5></div>
+                <div class="col-4"><h5 class="text-center">Assits</h5></div>
+                <div class="col-4"><h2 class="text-center">@InfoJogadorPrinc.Kills</h2></div>
+                <div class="col-4"><h2 class="text-center">@InfoJogadorPrinc.Deaths</h2></div>
+                <div class="col-4"><h2 class="text-center">@InfoJogadorPrinc.Assists</h2></div>
             </div>
         </div>
         <div class="col">
-            <div class="row row-cols-5">
+            <div class="row row-cols-5 text-center">
                 @{ 
-                    List<InvocChamp> Champs = partida.Informacoes.ChampionsPartida;
-                    foreach (InvocChamp Champ in Champs)
-                    {
-                        string imgChamp = "http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/" + Champ.ChampionIcon;
-                        <div class="col"><img src="@imgChamp" width="30" height="30" style="margin-bottom:10px"/></div>
+                        List<InvocChamp> Champs = partida.Informacoes.ChampionsPartida;
+                        int cont = 1;
+                        foreach (InvocChamp Champ in Champs)
+                        {
+                            string imgChamp = "http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/" + Champ.ChampionIcon;
+                            string team = cont < 6 ? "team-blue" : "team-red";
+                            <div class="col @team"><img class="chapions-img" src="@imgChamp" width="30" height="30"/></div>
+                            cont += 1;
                     }
                 }
             </div>
